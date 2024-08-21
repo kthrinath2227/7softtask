@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7SoftAI</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .full-width-container {
+            width: 100vw;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .header {
+            background-color: rgb(241, 210, 33);
+            width: 100%;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-text {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 8px;
+        }
+
+        .container-1 {
+            margin-top: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .child {
+            flex: 1 1 50%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .child {
+                flex: 1 1 100%;
+            }
+
+            .child-dec {
+                text-align: center;
+            }
+        }
+
+        .inter-img {
+            width: 320px;
+        }
+
+        .bg-img {
+            min-width: 250px;
+            max-width: 650px;
+        }
+
+        .head-text {
+            font-weight: 550;
+            color: black;
+            font-size: 30px;
+        }
+
+        .dynamic-text {
+            color: rgb(214, 80, 31);
+        }
+
+        .meta {
+            width: 100px;
+        }
+
+        .para-1 {
+            font-weight: 550;
+            font-size: 19px;
+            color: black;
+        }
+
+        .btn-1, .btn-2 {
+            background-color: rgb(10, 112, 112);
+            color: white;
+            text-align: center;
+            border-width: 0;
+        }
+
+        .btn-1 {
+            width: 200px;
+            height: 40px;
+            border-radius: 50px;
+        }
+
+        .btn-2 {
+            display: none; /* Hide by default */
+            width: 100%;
+            height: 40px;
+        }
+
+        /* Show btn-2 and hide btn-1 on small screens */
+        @media (max-width: 768px) {
+            .btn-1 {
+                display: none;
+            }
+            .btn-2 {
+                display: block;
+                border-radius: 0;
+            }
+            .flex-card {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+        }
+        .container-2 {
+            background-color: rgb(177, 228, 202);
+            padding: 20px;
+            
+            
+        }
+        .flex-card {
+            display:flex;
+            flex-direction: column;
+            
+        }
+
+        @media (min-width:769px) {
+            .flex-card{
+                flex-direction: row;
+            }
+        }
+        .row-col {
+            display: flex;
+            flex-direction: row;
+        }
+        @media (min-width:769px) {
+            .row-col { 
+                flex-direction: column;
+            }
+          
+        }
+        .round-container {
+            background-color: white;
+            border-radius: 100px;
+            width: 40px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            
+        }
+        .para-green {
+            color: black;
+            font-weight: 600;
+            margin: 5px;
+            font-size: 18px;
+        }
+        
+        .vertical-line {
+            border-left: 2px solid #4ad8b5; 
+            height: 100px; 
+            margin: 20px auto; 
+            display: none;
+        }
+        @media (min-width: 769px) {
+            .vertical-line {
+                display: block;
+            }
+           
+          
+        }
+        .container-3 {
+            padding: 20px;
+            background-color: rgb(243, 243, 243);
+         text-align: center;
+        }
+        .gray-heading {
+            margin-top: 25px;
+                font-weight: 900;
+                font-size: 35px;
+        }
+        .gray-cnt-1 {
+          
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .list-img {
+            width: 80px;
+        }
+        .container-4 {
+            width:100;
+            display: flex;
+            flex-direction: row;
+            
+            padding: 20px;   
+        }
+       
+        .container-4-img {
+            width: 500px;
+        }
+        .img-card {
+            width:50%;
+            
+        }
+        .card-container {
+            width:50%;
+        }
+        .card {
+            border-radius: 20px;
+            padding: 20px;
+            border-width: 5px;
+            border-color: rgb(223, 224, 224);
+        }
+       @media (max-width:769px) {
+        .container-4 {
+            flex-direction: column;
+        }
+        .img-card {
+            width: 100%;
+        }
+        .card-container {
+            width: 100%;
+        }
+
+       }
+       
+        .card-heading {
+            text-align: center;
+            color: black;
+            font-size: 25px;
+            font-weight: 700;
+
+        }
+        .card-para {
+            color:black;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .form-control {
+            border-radius: 10px;
+            border-width: 0px;
+            background-color: rgb(236, 236, 236);
+            height: 50px;
+        }
+        .checkbox-text {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .btn-container {
+            margin-top: 30px;
+            text-align: center;
+
+        }
+        .btn-card {
+            color: white;
+            background-color: rgb(39, 128, 39);
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border-width: 0px;
+        }
+        .card-text-l {
+            font-weight: 900;
+            font-size: 20px;
+        }
+        .platform-container {
+            text-align: center;
+            font-weight: 700;
+            font-size: 30px;
+        }
+       
+       .images-container-5 {
+        display: flex;
+        text-align: center;
+        margin-top:30px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+       }
+       .adds-img {
+        margin: 20px;
+        width: 120px;
+       }
+       .img-btn {
+        width:300px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 1px;
+        border-width: 0px;
+        color: white;
+        font-weight: 500;
+        font-size: 17px;
+        background-color: rgb(61, 180, 144);
+       }
+       .heading-green {
+    color: #002c21;
+    font-family: "proxima-nova", Sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 41px;
+    letter-spacing: -1px;
+       }
+       .heading-yash {
+        color: #05a68b;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 35px;
+    letter-spacing: -1px;
+       }
+       .side-image {
+        height: auto;
+    max-width: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+       }
+       .main-box-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+       }
+       .box-1 {
+        border-radius: 20px;
+        width: 400px;
+        padding: 15px;
+        margin: 10px;
+        border-color: rgb(236, 198, 28);
+        border-width: 1px;
+        text-align: center;
+        border-style:groove;
+       }
+       .heading-green-1 {
+    color: #002c21;
+    font-family: "proxima-nova", Sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    
+       }
+       .heading-green-2 {
+    color: #002c21;
+    font-family: "proxima-nova", Sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    
+       }
+       .container-8{
+        background-color: blanchedalmond;
+        padding: 20px;
+        text-align: center;
+       }
+       .cnt-8-heading {
+        font-family: 32px;
+        line-height: 1.1em;
+        font-weight: 900;
+        color: black;
+       }
+       .cnt-8-para {
+        font-size: 20px;
+
+       }
+       .container-10 {
+        text-align: center;
+        padding: 20px;
+       }
+       .cnt-10{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 20px;
+       }
+       .bootstrap-container {
+        padding: 20px;
+        text-align: center;
+       }
+
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const words = ["CRM", "Marketing", "Commerce"];
+            let currentIndex = 0;
+
+            const dynamicText = document.getElementById("dynamic-text");
+            dynamicText.textContent = words[currentIndex];
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % words.length;
+                dynamicText.textContent = words[currentIndex];
+            }, 2000);
+        });
+    </script>
+</head>
+<body>
+    <div class="full-width-container">
+        <div class="header">
+            <p class="header-text">Get Started @799/month [Annual plans only] 🚀</p>
+        </div>
+        <div class="container-1">
+            <div class="child child-dec">
+                <div class="ml-5">
+                    <div class="mb-3 row-col">
+                        <img class="inter-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722851485/main_moreci.png" alt="Card image cap">
+                    </div>
+                    <div class="align">
+                        <h1 class="head-text">Transform Conversations into <br> Conversions with WhatsApp <span id="dynamic-text" class="dynamic-text"></span></h1>
+                    </div>
+                    <div class="mb-4">
+                        <img class="meta" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722867459/meta_f1a4c8.webp">
+                    </div>
+                    <div>
+                        <p class="para-1">Integrate effortlessly with the WhatsApp Business API. The only full-stack platform to offer a seamless customer experience & grow your business on WhatsApp.</p>
+                    </div>
+                    <div>
+                        <button class="btn-1">Start Free Trial</button>
+                    </div>
+                </div>
+            </div>
+            <div class="child">
+                <div>
+                    <img class="bg-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722854472/Group-37148-1-768x598_szjdmi.webp" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <button class="btn-2">Start Free Trial</button>
+            </div>
+        </div>
+        <div class="container-2">
+            <div class="flex-card">
+                <div class="m-3 row-col">
+                    <div class="round-container"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+                        <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707zM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1zM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707zM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0z"/>
+                      </svg></div>
+                      <div><p class="para-green">Get  Green Tick Verfied</p>
+                    </div>
+                      
+                </div>
+                <div class="vertical-line"></div>
+                <div class="m-3 row-col">
+                    <div class="round-container"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone-fill" viewBox="0 0 16 16">
+                        <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+                      </svg></div>
+
+                      <div><p class="para-green">One time & recurring Campaigns on WhatsApp</p></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="m-3 row-col">
+                    <div class="round-container"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-inboxes-fill" viewBox="0 0 16 16">
+                        <path d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
+                      </svg></div>
+                      <div><p class="para-green">Shared Team Inbox with auto chat assignment</p></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="m-3 row-col">
+                    <div class="round-container"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                      </svg></div>
+                      <div><p class="para-green">Build your own Workflows</p></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="m-3 row-col">
+                    <div class="round-container"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                        <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+                      </svg></div>
+                      <div><p class="para-green">Campaign & Agent Analytics</p></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="m-3 row-col">
+                    <div class="round-container"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop-window" viewBox="0 0 16 16">
+                        <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5m2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5"/>
+                      </svg></div>
+                      <div><p class="para-green">Simplicity for SMBs with Enterprise grade Scale & Security</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-3">
+            <div class="gray-cnt">
+                <h1 class="gray-heading">25,000+ Businesses Across the Globe Trust Interakt</h1>
+            </div>
+            <div class="gray-cnt-1 mt-5">
+                <div> 
+                    <img class="list-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722933119/blue_tosrtz.webp">
+                </div>
+                <div> 
+                    <img class="list-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722937382/Jiomart.png_of4dqq.webp">
+                </div>
+                <div> 
+                    <img class="list-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722933078/zoop_wgfbyu.webp">
+                </div>
+                <div> 
+                    <img class="list-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722933095/ind_hrd6ls.webp">
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="container-4">
+            <div class="img-card">
+                <img class="container-4-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1722937882/ctwa-2_dmjgnj.webp">
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <h3 class="card-heading">Start For a 14-Day Free Trial</h3>
+                   <div class="mt-4">
+                    <p class="card-para">Contact Details</p>
+                    <form>
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="First name">
+                          </div>
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name">
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Work Email">
+                            </div>
+                          </div>
+                      </form>
+                   </div>
+                   <div class="mt-4">
+                    <p class="card-para">Company Details</p>
+                    <form>
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Company Name">
+                          </div>
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Website">
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Location">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Designation">
+                            </div>
+                          </div>
+                          <div class="row mt-3">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Industry">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Monthly Revenue">
+                            </div>
+                          </div>
+                          <div class="custom-control custom-checkbox mt-4">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label checkbox-text" for="customCheck1"> Get Updates regarding your Interakt account on WhatsApp</label>
+                          </div>
+                          <div class="btn-container">
+                            <button class="btn-card">START FREE TRAIL</button>
+                          </div>
+                          <div class="mt-4">
+                            <p class="card-text-l">By clicking on “Register with Interakt” you agree to our terms & services and privacy policy</p>
+                          </div>
+                          
+                          
+                      </form>
+                   </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="bootstrap-container mt-5">
+                <div>
+                    <h1 class="cnt-8-heading">Built for any Industry</h1>
+                </div>
+               <!-- Bootstrap Carousel -->
+               <div id="myCarousel" class="carousel slide mt-3" data-bs-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                  <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                  <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                </ol>
+              
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724240605/boostrap-2_mm7mdh.png" class="d-block w-70" alt="First slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724240604/bootstrap-3_gkyjds.png" class="d-block w-70" alt="Second slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724240603/bootsrap1_awuze0.png" class="d-block w-70" alt="Third slide">
+                  </div>
+                </div>
+              
+                <!-- Controls -->
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
+              
+             
+            </div>
+            <div class="container-6 mt-5">
+                <div class="platform-container">
+                    <h1 class="platform-container">Integrates easily with 60+ platforms</h1>
+                </div>
+                <div class="images-container-5">
+                    <div><img class="adds-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723025190/facebook_grerfn.png" ></div>
+                    <div><img class="adds-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723025206/googlesheets_tqsjek.png"> </div>
+                    <div><img class="adds-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723025230/pabbly_kytel8.png"></div>
+                    <div><img class="adds-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723025249/shopify_u84z1a.jpg"></div>
+                    <div><img class="adds-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723025173/woo_rarl5u.png"></div>
+                    <div><img class="adds-img" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723025136/zoho_lnmite.png" ></div>
+                </div>
+                <div class="images-container-5">
+                    <button class="img-btn">Get Started With Free Trail</button>
+                </div>
+            </div>
+
+            <div class="container-4 m-5">
+                <div class="img-card">
+                    <h2 class="heading-green">We were able to increase our revenue from the first Diwali to the second Diwali to approximately 4× of what we did and we couldn’t have done this without the help of Interakt.</h2>
+                    <h1 class="heading-yash">Yash Banage</h1>
+                    <h2 class="heading-green">Co-founder, Bombay Sweet Shop
+                    </h2>
+                </div>
+                <div class="card-container">
+                    <img class="side-image" src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1723029438/lappyimg_vl23tp.webp">
+                </div>
+            </div>
+            <div class="m-4">
+                <div class="main-box-container">
+                    <div class="box-1">
+                        <h1 class="heading-green-1">1.56L</h1>
+                        <p class="heading-green-2">revenue generated in a day</p>
+                    </div>
+                    <div class="box-1">
+                        <h1 class="heading-green-1">40%</h1>
+                        <p class="heading-green-2">customer queries handled by Boondi – the bot</p>
+                    </div>
+                    <div class="box-1">
+                        <h1 class="heading-green-1">4x</h1>
+                        <p class="heading-green-2">increase in revenue since onboarding with Interakt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-8">
+                <div class="container-8inner">
+                    <div class="mt-5">
+                        <h2 class="cnt-8-heading">More reasons to choose Interakt</h1>
+                        <p class="cnt-8-para">Get a Green Tick verified WhatsApp Business API account along with:</p>
+                    </div>
+                    <div class="main-box-container"> 
+                        <div class="box-1">
+                            <div>
+                                <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724151612/Frame-4_ej0fdj.webp" class="box-image">
+                            </div>
+                            <h2 class="cnt-8-heading">Access to Meta's APIs</h2>
+                            <p>Leverage direct Meta APIs and get access to the latest WhatsApp Business API features</p>
+                        </div>
+                        <div class="box-1">
+                            <div>
+                                <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724151689/scalable_ym4m0z.png" class="box-image">
+                            </div>
+                            <h2 class="cnt-8-heading">Scalable Infrastructure</h2>
+                            <p>1000s of brands have partnered with us to scale up their customer support & engagement!</p>
+                        </div>
+                        <div class="box-1">
+                            <div>
+                                <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724151612/Frame-4_ej0fdj.webp" class="box-image">
+                            </div>
+                            <h2 class="cnt-8-heading">Seamless Integrations</h2>
+                            <p>OOTB integrations with your favorite CRMs, payment gateways, e-stores & marketing automation platforms</p>
+                        </div>
+                        <div class="box-1">
+                            <div>
+                                <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724151669/seamless_m4om3v.png" class="box-image">
+                            </div>
+                            <h2 class="cnt-8-heading">Smooth onboarding & easy setup</h2>
+                            <p>Minimize operational disruption, and deploy a powerful WhatsApp solution for your business in a few simple steps!</p>
+                        </div>
+                        <div class="box-1">
+                            <div>
+                                <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724151630/highly_j2ynja.png" class="box-image">
+                            </div>
+                            <h2 class="cnt-8-heading">Highly competitive pricing</h2>
+                            <p>No hidden costs – transparent pricing structure with no lock-ins. We show you campaign costs upfront so that there are no surprises later.</p>
+                        </div>
+                        <div class="box-1">
+                            <div>
+                                <img src="https://res.cloudinary.com/dx3m8gmpa/image/upload/v1724151717/industry_b5bkwy.webp" class="box-image">
+                            </div>
+                            <h2 class="cnt-8-heading">Industry Leading Support</h2>
+                            <p>Access our premium customer support and get a resolution within minutes!</p>
+                        </div>
+
+                    </div>
+                    <div class="mt-5">
+                        <button class="btn-1">Start Free Trial</button>
+                    </div>    
+                </div>
+            </div>
+            <div class="container-10">
+                <div class="mt-5">
+                    <h1 class="cnt-8-heading">Get Started with Interakt Today</h1>
+                </div>
+                <div class="cnt-10">
+                    <div class="row m-2">
+                        <div class="m-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                          </svg> 
+                          </div>
+                          <div class="m-1"><p>Engage & Re-engage Prospects</p></div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="m-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                          </svg>  
+                          </div>
+                          <div class="m-1"><p>Drive Sales
+                        </p></div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="m-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                          </svg> 
+                          </div>
+                          <div class="m-1"><p>Deliver higher CSAT
+                        </p></div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="m-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                          </svg> 
+                          </div>
+                          <div class="m-1"><p>Support at Scale</p></div>
+                    </div>
+                </div>
+                <button class="btn-1">Try Interakt for Free</button>
+            </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
